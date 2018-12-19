@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="diariosecreto.DiarioLayoutController">
+   <children>
+      <AnchorPane fx:id="optionSideBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="142.0" style="-fx-background-color: #c18787#c18787;">
+         <children>
+            <Circle fx:id="userPhoto" fill="DODGERBLUE" layoutX="69.0" layoutY="60.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line endX="-1.0" layoutX="121.0" layoutY="120.0" startX="-100.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainAnchor" layoutX="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" prefWidth="458.0">
+         <children>
+            <ImageView fx:id="openCloseSidebar" fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@menuButton.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
