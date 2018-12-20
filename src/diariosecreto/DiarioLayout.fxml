@@ -1,20 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="diariosecreto.DiarioLayoutController">
-   <children>
-      <AnchorPane fx:id="optionSideBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="142.0" style="-fx-background-color: #c18787#c18787;">
+<BorderPane prefHeight="618.0" prefWidth="1000.0" style="-fx-background-color: #F8F8F7;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="diariosecreto.DiarioLayoutController">
+   <left>
+      <AnchorPane fx:id="optionSideBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="235.0" style="-fx-background-color: #c18787#c18787;" BorderPane.alignment="CENTER">
          <children>
-            <Circle fx:id="userPhoto" fill="DODGERBLUE" layoutX="69.0" layoutY="60.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" />
-            <Line endX="-1.0" layoutX="121.0" layoutY="120.0" startX="-100.0" />
+            <Circle fx:id="userPhoto" fill="DODGERBLUE" layoutX="118.0" layoutY="81.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line endX="106.0" layoutX="115.0" layoutY="162.0" startX="-100.0" />
+            <Button layoutX="24.0" layoutY="575.0" mnemonicParsing="false" onAction="#exitApp" onMouseEntered="#onExitIn" onMouseExited="#onExitout" prefHeight="29.0" prefWidth="186.0" style="-fx-background-color: #cc4747;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="15.0" />
+               </font>
+            </Button>
+            <PasswordField layoutX="11.0" layoutY="250.0" prefHeight="25.0" prefWidth="213.0" />
+            <TextField layoutX="12.0" layoutY="194.0" prefHeight="25.0" prefWidth="213.0" />
+            <Label layoutX="15.0" layoutY="177.0" text="Nome de utilizador" />
+            <Label layoutX="15.0" layoutY="233.0" text="Palavra-passe" />
+            <Button layoutX="25.0" layoutY="295.0" mnemonicParsing="false" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Limpar" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="126.0" layoutY="295.0" mnemonicParsing="false" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Entrar" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="15.0" />
+               </font>
+            </Button>
+            <Line endX="106.0" layoutX="114.0" layoutY="343.0" startX="-100.0" />
+            <Button fx:id="defButton" layoutX="25.0" layoutY="359.0" mnemonicParsing="false" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="186.0" style="-fx-background-color: #ff9393;" text="Definições" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mainAnchor" layoutX="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" prefWidth="458.0">
+   </left>
+   <center>
+      <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" prefWidth="458.0" style="-fx-background-color: #F8F8F7;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="openCloseSidebar" fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,5 +56,5 @@
             </ImageView>
          </children>
       </AnchorPane>
-   </children>
-</AnchorPane>
+   </center>
+</BorderPane>

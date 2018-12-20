@@ -5,20 +5,22 @@
  */
 package diariosecreto;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -40,6 +42,11 @@ public class DiarioLayoutController implements Initializable {
     
     @FXML
     private AnchorPane mainAnchor;
+    
+    @FXML
+    public void exitApp(){
+        System.exit(0);
+    }
     
     
     public void openCloseSidebar(){
@@ -63,6 +70,28 @@ public class DiarioLayoutController implements Initializable {
         
     }
     
+    @FXML
+    public void onExitout(MouseEvent event){
+        //#c65b5b
+        ((Button)event.getSource()).setStyle("-fx-background-color:   #cc4747;");
+    }
+    
+    @FXML
+    public void onExitIn(MouseEvent event){
+        //#c65b5b
+        ((Button)event.getSource()).setStyle("-fx-background-color:  #bf2d2d;");
+    }
+    
+    @FXML
+    public void onButtonOut(MouseEvent event){
+        ((Button)event.getSource()).setStyle("-fx-background-color:  #ff9393;");
+    }
+    
+    @FXML
+    public void onButtonIn(MouseEvent event){
+        ((Button)event.getSource()).setStyle("-fx-background-color: rgb(255, 104, 104);");
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -76,6 +105,7 @@ public class DiarioLayoutController implements Initializable {
             }
             
         });
+        
     }    
     
 }

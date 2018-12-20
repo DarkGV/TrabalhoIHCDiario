@@ -9,7 +9,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -21,8 +23,11 @@ public class DiarioSecreto extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("DiarioLayout.fxml"));
         
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 1000, 618);
         
+        stage.setTitle("O meu diário");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("diaryIcon.png")));
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
