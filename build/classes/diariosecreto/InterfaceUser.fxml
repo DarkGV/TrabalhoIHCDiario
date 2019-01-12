@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="LayoutChange" prefHeight="618.0" prefWidth="1000.0" style="-fx-background-color: #fff7f7;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="diariosecreto.InterfaceUserController">
+   <left>
+      <AnchorPane fx:id="optionSideBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="235.0" style="-fx-background-color: #c18787#c18787;" BorderPane.alignment="CENTER">
+         <children>
+            <Circle fx:id="userPhoto" fill="DODGERBLUE" layoutX="118.0" layoutY="81.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line endX="106.0" layoutX="115.0" layoutY="162.0" startX="-100.0" />
+            <Button layoutX="24.0" layoutY="575.0" mnemonicParsing="false" onAction="#exitApp" onMouseEntered="#onExitIn" onMouseExited="#onExitout" prefHeight="29.0" prefWidth="186.0" style="-fx-background-color: #cc4747;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="15.0" layoutY="177.0" text="Nome de utilizador" />
+            <Line endX="106.0" layoutX="114.0" layoutY="343.0" startX="-100.0" />
+            <Button fx:id="defButton" layoutX="25.0" layoutY="359.0" mnemonicParsing="false" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="186.0" style="-fx-background-color: #ff9393;" text="Definições" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="nomeuser" layoutX="15.0" layoutY="205.0" prefHeight="17.0" prefWidth="207.0" text="NOME ...">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="244.0" text="Nome" />
+            <Label fx:id="nome" layoutX="14.0" layoutY="272.0" prefHeight="17.0" prefWidth="207.0" text="NOME ...">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" prefWidth="458.0" style="-fx-background-color: #fff7f7;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="openCloseSidebar" fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@menuButton.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

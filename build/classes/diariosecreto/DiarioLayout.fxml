@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="618.0" prefWidth="1000.0" style="-fx-background-color: #F8F8F7;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="diariosecreto.DiarioLayoutController">
+<BorderPane fx:id="LayoutChange" prefHeight="618.0" prefWidth="1000.0" style="-fx-background-color: #fff7f7;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="diariosecreto.DiarioLayoutController">
    <left>
       <AnchorPane fx:id="optionSideBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="235.0" style="-fx-background-color: #c18787#c18787;" BorderPane.alignment="CENTER">
          <children>
@@ -23,8 +27,8 @@
                   <Font name="Book Antiqua Bold" size="15.0" />
                </font>
             </Button>
-            <PasswordField layoutX="11.0" layoutY="250.0" prefHeight="25.0" prefWidth="213.0" />
-            <TextField layoutX="12.0" layoutY="194.0" prefHeight="25.0" prefWidth="213.0" />
+            <PasswordField fx:id="passwdLabel" layoutX="11.0" layoutY="250.0" prefHeight="25.0" prefWidth="213.0" />
+            <TextField fx:id="userName" layoutX="12.0" layoutY="194.0" prefHeight="25.0" prefWidth="213.0" />
             <Label layoutX="15.0" layoutY="177.0" text="Nome de utilizador" />
             <Label layoutX="15.0" layoutY="233.0" text="Palavra-passe" />
             <Button layoutX="25.0" layoutY="295.0" mnemonicParsing="false" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Limpar" textFill="WHITE">
@@ -32,7 +36,7 @@
                   <Font name="Book Antiqua Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="126.0" layoutY="295.0" mnemonicParsing="false" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Entrar" textFill="WHITE">
+            <Button layoutX="126.0" layoutY="295.0" mnemonicParsing="false" onAction="#loggedInBtn" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Entrar" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="15.0" />
                </font>
@@ -47,13 +51,73 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" prefWidth="458.0" style="-fx-background-color: #F8F8F7;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="mainAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" prefWidth="458.0" style="-fx-background-color: #fff7f7;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="openCloseSidebar" fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@menuButton.png" />
                </image>
             </ImageView>
+            <Label layoutX="30.0" prefHeight="43.0" prefWidth="627.0" text="Bem-vindo ao Seu Diário Secreto">
+               <padding>
+                  <Insets left="100.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Bookman Old Style Bold" size="27.0" />
+               </font>
+            </Label>
+            <TextField layoutX="30.0" layoutY="142.0" prefHeight="25.0" prefWidth="300.0" />
+            <Label layoutX="30.0" layoutY="125.0" prefHeight="17.0" prefWidth="58.0" text="Nome" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="117.0" layoutY="42.0" prefHeight="11.0" prefWidth="487.0" />
+            <Label layoutX="286.0" layoutY="53.0" text="Registe-se">
+               <font>
+                  <Font name="Book Antiqua" size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="358.0" layoutY="125.0" prefHeight="17.0" prefWidth="68.0" text="Password" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="358.0" layoutY="178.0" prefHeight="17.0" prefWidth="122.0" text="Repetir Password" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="sexoComboBox" layoutX="30.0" layoutY="261.0" prefHeight="25.0" prefWidth="153.0" />
+            <Label layoutX="31.0" layoutY="240.0" prefHeight="17.0" prefWidth="58.0" text="Sexo" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="15.0" />
+               </font>
+            </Label>
+            <TextField layoutX="30.0" layoutY="195.0" prefHeight="25.0" prefWidth="300.0" />
+            <Label layoutX="30.0" layoutY="178.0" prefHeight="17.0" prefWidth="131.0" text="Nome de utilizador" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="554.0" layoutY="547.0" mnemonicParsing="false" onAction="#registerButton" prefHeight="34.0" prefWidth="84.0" text="Registar" />
+            <ImageView fx:id="imagePrev" fitHeight="180.0" fitWidth="294.0" layoutX="360.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="363.0" layoutY="240.0" prefHeight="17.0" prefWidth="58.0" text="Imagem" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="596.0" layoutY="456.0" mnemonicParsing="false" text="Procurar" />
+            <TextField layoutX="368.0" layoutY="456.0" prefHeight="25.0" prefWidth="224.0" />
+            <DatePicker fx:id="datePick" layoutX="31.0" layoutY="335.0" prefHeight="25.0" prefWidth="209.0" />
+            <Label layoutX="32.0" layoutY="318.0" prefHeight="17.0" prefWidth="140.0" text="Data de Nascimento" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="47.0" layoutY="547.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="84.0" text="Limpar" />
+            <PasswordField layoutX="357.0" layoutY="142.0" prefHeight="25.0" prefWidth="297.0" />
+            <PasswordField layoutX="359.0" layoutY="195.0" prefHeight="25.0" prefWidth="297.0" />
          </children>
       </AnchorPane>
    </center>

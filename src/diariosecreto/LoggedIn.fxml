@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@LoggedInLayout.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="diariosecreto.LoggedInController">
+   <center>
+      <TextArea fx:id="mainText" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <BorderPane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f7cfcf;" BorderPane.alignment="CENTER">
+         <center>
+            <Label fx:id="nomeutilizador" text="O meu diário" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="70.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </center>
+         <right>
+            <Label fx:id="hora" text="Label" textFill="#977171" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="100.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="Book Antiqua Bold" size="20.0" />
+               </font>
+            </Label>
+         </right>
+         <left>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Label fx:id="data" text="Label" textFill="#977171" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="-10.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Book Antiqua Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </center>
+               <left>
+                  <ImageView fitHeight="36.0" fitWidth="32.0" onMouseClicked="#returnMain" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@backbtn.png" />
+                     </image>
+                     <BorderPane.margin>
+                        <Insets left="10.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </left>
+            </BorderPane>
+         </left>
+      </BorderPane>
+   </top>
+</BorderPane>
