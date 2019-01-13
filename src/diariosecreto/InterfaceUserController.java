@@ -56,7 +56,6 @@ public class InterfaceUserController implements Initializable {
     public void openCloseSidebar(){
         TranslateTransition setSideBar = new TranslateTransition(new Duration(350), optionSideBar);        
         TranslateTransition setLayout = new TranslateTransition(new Duration(350), mainAnchor);
-        //closeBar.setToX(-(optionSideBar.getWidth()));
         
         if(optionSideBar.getTranslateX() != 0){ 
             setSideBar.setToX(0);
