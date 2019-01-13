@@ -46,6 +46,7 @@ public class DiarioLayoutController implements Initializable {
     
     
     private static String loggedInUser;
+    private static String passwdUser;
     
     @FXML
     private BorderPane LayoutChange;
@@ -124,6 +125,7 @@ public class DiarioLayoutController implements Initializable {
         dbConn.closeConnection();
         
         loggedInUser = userName.getText();
+        passwdUser = passwdLabel.getText();
         
         try{
             Parent loggedInPage = FXMLLoader.load(getClass().getResource("InterfaceUser.fxml"));
@@ -261,6 +263,10 @@ public class DiarioLayoutController implements Initializable {
     
     public static String LoggedInUser(){
         return loggedInUser;
+    }
+    
+    public static String PasswdUser(){
+        return passwdUser;
     }
     
 }

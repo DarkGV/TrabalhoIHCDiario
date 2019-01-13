@@ -69,8 +69,14 @@ public class LoggedInController implements Initializable {
            hourStr = hour + ":" + minute;
        
        DatabaseConnection dbConnection = new DatabaseConnection("UsersDB.db");
-       dbConnection.insertEntry(date, mainText.getText(), hourStr, DiarioLayoutController.LoggedInUser(), update);
-       dbConnection.closeConnection();
+       try
+       {
+         String cipher = new String(DiaryCrypto.encryptEntry(mainText.getText(), DiarioLayoutController.PasswdUser()));
+         dbConnection.insertEntry(date, cipher, hourStr, DiarioLayoutController.LoggedInUser(), update);
+         dbConnection.closeConnection();
+       }catch(Exception e){
+           System.out.println(e);
+       }
        InterfaceUserController.diaryStage.hide();
        InterfaceUserController.thisStage.show();
    }

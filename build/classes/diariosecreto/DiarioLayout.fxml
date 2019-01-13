@@ -27,8 +27,8 @@
                   <Font name="Book Antiqua Bold" size="15.0" />
                </font>
             </Button>
-            <PasswordField fx:id="passwdLabel" layoutX="11.0" layoutY="250.0" prefHeight="25.0" prefWidth="213.0" />
             <TextField fx:id="userName" layoutX="12.0" layoutY="194.0" prefHeight="25.0" prefWidth="213.0" />
+            <PasswordField fx:id="passwdLabel" layoutX="11.0" layoutY="250.0" prefHeight="25.0" prefWidth="213.0" />
             <Label layoutX="15.0" layoutY="177.0" text="Nome de utilizador" />
             <Label layoutX="15.0" layoutY="233.0" text="Palavra-passe" />
             <Button layoutX="25.0" layoutY="295.0" mnemonicParsing="false" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Limpar" textFill="WHITE">
@@ -36,7 +36,7 @@
                   <Font name="Book Antiqua Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="126.0" layoutY="295.0" mnemonicParsing="false" onAction="#loggedInBtn" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Entrar" textFill="WHITE">
+            <Button fx:id="logInbtn" layoutX="126.0" layoutY="295.0" mnemonicParsing="false" onAction="#loggedInBtn" onMouseEntered="#onButtonIn" onMouseExited="#onButtonOut" prefHeight="29.0" prefWidth="83.0" style="-fx-background-color: #ff9393;" text="Entrar" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="15.0" />
                </font>
@@ -66,7 +66,7 @@
                   <Font name="Bookman Old Style Bold" size="27.0" />
                </font>
             </Label>
-            <TextField layoutX="30.0" layoutY="142.0" prefHeight="25.0" prefWidth="300.0" />
+            <TextField fx:id="nameInsert" layoutX="30.0" layoutY="142.0" prefHeight="25.0" prefWidth="300.0" />
             <Label layoutX="30.0" layoutY="125.0" prefHeight="17.0" prefWidth="58.0" text="Nome" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
                <font>
                   <Font name="Bookshelf Symbol 7" size="15.0" />
@@ -94,7 +94,7 @@
                   <Font name="Bookshelf Symbol 7" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="30.0" layoutY="195.0" prefHeight="25.0" prefWidth="300.0" />
+            <TextField fx:id="userNameInsert" layoutX="30.0" layoutY="195.0" prefHeight="25.0" prefWidth="300.0" />
             <Label layoutX="30.0" layoutY="178.0" prefHeight="17.0" prefWidth="131.0" text="Nome de utilizador" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
                <font>
                   <Font name="Bookshelf Symbol 7" size="15.0" />
@@ -107,8 +107,8 @@
                   <Font name="Bookshelf Symbol 7" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="596.0" layoutY="456.0" mnemonicParsing="false" text="Procurar" />
-            <TextField layoutX="368.0" layoutY="456.0" prefHeight="25.0" prefWidth="224.0" />
+            <Button fx:id="searchImage" layoutX="596.0" layoutY="456.0" mnemonicParsing="false" text="Procurar" />
+            <TextField fx:id="imagePathInsert" layoutX="368.0" layoutY="456.0" prefHeight="25.0" prefWidth="224.0" />
             <DatePicker fx:id="datePick" layoutX="31.0" layoutY="335.0" prefHeight="25.0" prefWidth="209.0" />
             <Label layoutX="32.0" layoutY="318.0" prefHeight="17.0" prefWidth="140.0" text="Data de Nascimento" textAlignment="JUSTIFY" textFill="#2c0000" wrapText="true">
                <font>
@@ -116,8 +116,8 @@
                </font>
             </Label>
             <Button layoutX="47.0" layoutY="547.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="84.0" text="Limpar" />
-            <PasswordField layoutX="357.0" layoutY="142.0" prefHeight="25.0" prefWidth="297.0" />
-            <PasswordField layoutX="359.0" layoutY="195.0" prefHeight="25.0" prefWidth="297.0" />
+            <PasswordField fx:id="passwdInsert" layoutX="357.0" layoutY="142.0" prefHeight="25.0" prefWidth="297.0" />
+            <PasswordField fx:id="paswdVerification" layoutX="359.0" layoutY="195.0" prefHeight="25.0" prefWidth="297.0" />
          </children>
       </AnchorPane>
    </center>
