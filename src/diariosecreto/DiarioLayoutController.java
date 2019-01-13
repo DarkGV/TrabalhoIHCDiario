@@ -5,6 +5,7 @@
  */
 package diariosecreto;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
@@ -25,13 +26,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -40,16 +43,45 @@ import javafx.util.Duration;
  */
 public class DiarioLayoutController implements Initializable {
     
-    protected static Stage thisStage;
-    protected static Stage diaryStage;
     
-    private String loggedInUser;
+    
+    private static String loggedInUser;
+    
+    @FXML
+    private BorderPane LayoutChange;
+    
+    /* REGISTER LAYOUT */
     
     @FXML
     private ComboBox sexoComboBox;
     
     @FXML
     private DatePicker datePick;
+    
+    @FXML
+    private PasswordField passwdInsert;
+    
+    @FXML
+    private PasswordField paswdVerification;
+    
+    @FXML
+    private TextField nameInsert;
+    
+    @FXML
+    private TextField userNameInsert;
+    
+    @FXML
+    private Button searchImage;
+    
+    @FXML
+    private TextField imagePathInsert;
+    
+    /* END */
+    
+    /*Login Nav Bar */
+    
+    @FXML
+    private Button logInbtn;
     
     @FXML
     private  Circle userPhoto;
@@ -72,10 +104,16 @@ public class DiarioLayoutController implements Initializable {
     @FXML
     private PasswordField passwdLabel;
     
+    /* END*/
+    
+    
+    
     @FXML
     public void exitApp(){
         System.exit(0);
     }
+    
+    /* Button  Entrar */
     
     @FXML
     public void loggedInBtn(ActionEvent event) {
@@ -97,30 +135,16 @@ public class DiarioLayoutController implements Initializable {
         }catch(IOException e){
             System.out.println(e);
         }
-        
-        
-        
-       /*try{
-            Parent loggedInPage = FXMLLoader.load(getClass().getResource("LoggedIn.fxml"));
-            Scene loggedInScene = new Scene(loggedInPage, 1000, 618);
-            Stage loggedInStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            thisStage = loggedInStage;
-            Stage newStage = new Stage();
-            diaryStage = newStage;
-            loggedInStage.hide();
-            newStage.getIcons().add( new Image( getClass().getResourceAsStream("diaryIcon.png") ) );
-            newStage.initStyle(StageStyle.UNDECORATED);
-            newStage.setScene(loggedInScene);
-            newStage.show();
-            
-        } catch(IOException ioe) {
-            System.out.println(ioe);
-        }*/
     }
     
+    /* Register to the Database */
     @FXML
     public void registerButton(){
-        System.out.println(datePick.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")));
+        DatabaseConnection dbConn = new DatabaseConnection("UsersDB.db");
+        if(passwdInsert.getText().equals(paswdVerification.getText()))
+             dbConn.insertUser(userNameInsert.getText(), nameInsert.getText(), (String)sexoComboBox.getValue(), passwdInsert.getText(), imagePathInsert.getText(), 
+                datePick.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")) );
+        
     }
     
     
@@ -139,8 +163,6 @@ public class DiarioLayoutController implements Initializable {
         else{
             setSideBar.setToX(-(optionSideBar.getWidth()));
             setLayout.setToX(-(optionSideBar.getWidth()));
-            mainAnchor.setPrefWidth(618.0);
-            System.out.println(mainAnchor.getPrefWidth());
             setSideBar.play();
             setLayout.play();
         }
@@ -175,6 +197,11 @@ public class DiarioLayoutController implements Initializable {
         Image userImg = new Image(getClass().getResource("nonLoggedIn.png").toExternalForm());
         userPhoto.setFill(new ImagePattern(userImg));
         
+        File f = new File (getClass().getResource("nonLoggedIn.png").toExternalForm());
+        
+        
+        imagePathInsert.setText(f.getAbsolutePath());
+
         imagePrev.setImage(userImg);
         
         sexoComboBox.getItems().addAll(
@@ -189,6 +216,51 @@ public class DiarioLayoutController implements Initializable {
             
         });
         
+        searchImage.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Stage toChooseFile = new Stage();
+                FileChooser fileChoose = new FileChooser();
+                fileChoose.setTitle("Escolha a sua imagem...");
+                fileChoose.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("PNG", "*.png"),
+                    new FileChooser.ExtensionFilter("JPG", "*.jpg")
+                );
+                File f = fileChoose.showOpenDialog(toChooseFile);
+                imagePathInsert.setText(f.getAbsolutePath());
+                imagePrev.setImage( new Image(f.toURI().toString()));
+            }
+        });
+        
+        LayoutChange.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                if(e.getCode() == KeyCode.ENTER){
+                    DatabaseConnection dbConn = new DatabaseConnection("UsersDB.db");
+                    System.out.println("userName -> " + userName.getText() + "\nPassword -> " + passwdLabel.getText());
+                    if(!dbConn.existsInDB(userName.getText(), passwdLabel.getText())) return;
+                    dbConn.closeConnection();
+
+                    loggedInUser = userName.getText();
+
+                    try{
+                        Parent loggedInPage = FXMLLoader.load(getClass().getResource("InterfaceUser.fxml"));
+                        Scene loggedInScene = new Scene(loggedInPage, 1000, 618);
+                        Stage newStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                        newStage.hide();
+                        newStage.setScene(loggedInScene);
+                        newStage.show();
+                    }catch(IOException z){
+                        System.out.println(z);
+                    }
+                }
+            }
+        });
+        
     }    
+    
+    public static String LoggedInUser(){
+        return loggedInUser;
+    }
     
 }

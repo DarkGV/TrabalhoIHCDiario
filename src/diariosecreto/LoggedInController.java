@@ -20,7 +20,7 @@ import javafx.scene.input.MouseEvent;
 
 public class LoggedInController implements Initializable {
     
-    private DatabaseConnection dbConnection;
+    private boolean update;
     
     @FXML
     private Label data;
@@ -49,12 +49,39 @@ public class LoggedInController implements Initializable {
    
    @FXML
    private void returnMain(MouseEvent event){
-       DiarioLayoutController.diaryStage.hide();
-       DiarioLayoutController.thisStage.show();
+       Calendar now = Calendar.getInstance();
+       int month = (now.get(Calendar.MONTH) + 1);
+       String monthRight;
+       
+       if(month < 10)
+           monthRight = "0" + month;
+       else
+           monthRight = String.valueOf(month);
+       
+       String date = now.get(Calendar.YEAR) + "/" + monthRight + "/" +now.get(Calendar.DAY_OF_MONTH);
+       GregorianCalendar calend = new GregorianCalendar();
+       int hour = calend.get(Calendar.HOUR_OF_DAY);
+       int minute = calend.get(Calendar.MINUTE);
+       String hourStr;
+       if(minute < 10)
+           hourStr = hour + ":0" + minute;
+       else
+           hourStr = hour + ":" + minute;
+       
+       DatabaseConnection dbConnection = new DatabaseConnection("UsersDB.db");
+       dbConnection.insertEntry(date, mainText.getText(), hourStr, DiarioLayoutController.LoggedInUser(), update);
+       dbConnection.closeConnection();
+       InterfaceUserController.diaryStage.hide();
+       InterfaceUserController.thisStage.show();
    }
+   
+   
+  
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        update = false;
         
         Calendar now = Calendar.getInstance();
 
@@ -62,7 +89,14 @@ public class LoggedInController implements Initializable {
         int dia = now.get(Calendar.DAY_OF_MONTH);
         int mes = now.get(Calendar.MONTH) + 1;
         
-        String strData = ano + "/" + mes + "/" + dia;
+        String monthRight;
+       
+       if(mes < 10)
+           monthRight = "0" + mes;
+       else
+           monthRight = String.valueOf(mes);
+        
+        String strData = ano + "/" + monthRight + "/" + dia;
         
          data.setText(strData);
          
@@ -77,13 +111,19 @@ public class LoggedInController implements Initializable {
         
         mainText.setWrapText(true);
         
-        dbConnection = new DatabaseConnection("UsersDB.db");
+        DatabaseConnection dbConnection = new DatabaseConnection("UsersDB.db");
         
-        String s = dbConnection.hasEntrance(strData, "AHAHAH MINHA MACHADINHA");
+        String s = dbConnection.hasEntrance(strData, DiarioLayoutController.LoggedInUser());
         
-        System.out.println(s);
-    }    
-    
+        if(s != null){
+            update = true;
+            mainText.setText(s);
+        }
+        
+        dbConnection.closeConnection();
+        
+        
+    }
    
     
 }

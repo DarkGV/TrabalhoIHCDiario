@@ -29,7 +29,7 @@ public class DiaryCrypto {
         return mode.doFinal(entry.getBytes());
     }
     
-    public static String decryptEntry(String entry, String passwd) throws Exception{
+    public static String decryptEntry(byte[] entry, String passwd) throws Exception{
         
         MessageDigest passwdDigest = MessageDigest.getInstance("md5");
         byte[] dgst = passwdDigest.digest(passwd.getBytes());
@@ -39,6 +39,6 @@ public class DiaryCrypto {
         SecretKey aesKey = new SecretKeySpec(dgst, 0, dgst.length, "AES");
         mode.init(Cipher.DECRYPT_MODE, aesKey);
         
-        return new String( mode.doFinal(entry.getBytes()) );
+        return new String( mode.doFinal(entry) );
     }
 }
